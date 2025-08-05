@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talk - Improve Your Communication Skills</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h1>Talk</h1>
+                </div>
+                <p class="tagline">Master your communication skills with AI-powered analysis</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Screen -->
+            <div id="welcome-screen" class="screen active">
+                <div class="welcome-content">
+                    <div class="welcome-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h2>Welcome to Talk</h2>
+                    <p>Improve your communication skills through intelligent speech analysis and personalized feedback.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Speech Analysis</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>TOEFL Assessment</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-route"></i>
+                            <span>Personalized Plan</span>
+                        </div>
+                    </div>
+
+                    <button id="start-btn" class="btn btn-primary">
+                        <i class="fas fa-play"></i>
+                        Start Your Assessment
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question Selection Screen -->
+            <div id="question-screen" class="screen">
+                <div class="question-content">
+                    <h2>Choose Your Topic</h2>
+                    <p>Select a question that best describes your daily life or interests. This will help us understand your communication patterns.</p>
+                    
+                    <div class="question-grid" id="question-grid">
+                        <!-- Questions will be loaded here -->
+                    </div>
+
+                    <div class="question-actions">
+                        <button id="back-to-welcome" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                            Back
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recording Screen -->
+            <div id="recording-screen" class="screen">
+                <div class="recording-content">
+                    <div class="recording-header">
+                        <h2 id="current-question">Tell me about your typical day</h2>
+                        <p>Speak naturally for about 90 seconds. Don't worry about being perfect!</p>
+                    </div>
+
+                    <div class="recording-visualizer">
+                        <div class="wave-container">
+                            <div class="wave" id="wave"></div>
+                        </div>
+                        <div class="recording-status">
+                            <div class="status-indicator" id="status-indicator">
+                                <i class="fas fa-microphone"></i>
+                            </div>
+                            <span id="status-text">Ready to record</span>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Transcription Display -->
+                    <div class="transcription-container">
+                        <div class="transcription-header">
+                            <h3>Live Transcription</h3>
+                            <div class="transcription-legend">
+                                <span class="legend-item">
+                                    <span class="legend-color filler-word"></span>
+                                    Filler Words
+                                </span>
+                                <span class="legend-item">
+                                    <span class="legend-color mispronunciation"></span>
+                                    Mispronunciations
+                                </span>
+                            </div>
+                        </div>
+                        <div class="transcription-display" id="transcription-display">
+                            <p class="transcription-placeholder">Start speaking to see your transcription here...</p>
+                        </div>
+                    </div>
+
+                    <div class="recording-controls">
+                        <button id="start-recording" class="btn btn-primary btn-large">
+                            <i class="fas fa-microphone"></i>
+                            Start Recording
+                        </button>
+                        <button id="stop-recording" class="btn btn-danger btn-large" style="display: none;">
+                            <i class="fas fa-stop"></i>
+                            Stop Recording
+                        </button>
+                    </div>
+
+                    <div class="recording-timer">
+                        <span id="timer">00:00</span>
+                    </div>
+
+                    <div class="recording-actions">
+                        <button id="back-to-questions" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                            Back to Questions
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Screen -->
+            <div id="analysis-screen" class="screen">
+                <div class="analysis-content">
+                    <div class="analysis-header">
+                        <h2>Analyzing Your Speech</h2>
+                        <p>Our AI is processing your recording and generating detailed insights...</p>
+                    </div>
+
+                    <div class="analysis-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="progress-steps">
+                            <div class="step active" data-step="1">
+                                <i class="fas fa-microphone"></i>
+                                <span>Processing Audio</span>
+                            </div>
+                            <div class="step" data-step="2">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Analyzing Speech</span>
+                            </div>
+                            <div class="step" data-step="3">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>TOEFL Assessment</span>
+                            </div>
+                            <div class="step" data-step="4">
+                                <i class="fas fa-route"></i>
+                                <span>Creating Plan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Screen -->
+            <div id="results-screen" class="screen">
+                <div class="results-content">
+                    <div class="results-header">
+                        <h2>Your Communication Assessment</h2>
+                        <p>Here's your detailed analysis and personalized improvement plan</p>
+                    </div>
+
+                    <!-- Overall Score -->
+                    <div class="overall-score">
+                        <div class="score-circle">
+                            <div class="score-number" id="overall-score">3.8</div>
+                            <div class="score-label">Overall Score</div>
+                        </div>
+                        <div class="score-details">
+                            <div class="level-badge" id="level-badge">Intermediate</div>
+                            <div class="toefl-equivalent" id="toefl-equivalent">TOEFL: 23/30</div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Analysis -->
+                    <div class="analysis-breakdown">
+                        <h3>Detailed Analysis</h3>
+                        <div class="metrics-grid" id="metrics-grid">
+                            <!-- Metrics will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Improvement Plan -->
+                    <div class="improvement-plan">
+                        <h3>Your Personalized Improvement Plan</h3>
+                        <div class="plan-content" id="plan-content">
+                            <!-- Plan will be populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="results-actions">
+                        <button id="retake-assessment" class="btn btn-primary">
+                            <i class="fas fa-redo"></i>
+                            Take Another Assessment
+                        </button>
+                        <button id="download-report" class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Download Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Talk. Empowering better communication through AI.</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Processing your speech...</p>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 

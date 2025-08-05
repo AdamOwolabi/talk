@@ -109,6 +109,13 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Talk server running on port ${PORT}`);
-}); 
+
+// For Vercel deployment
+if (process.env.NODE_ENV !== 'production') {
+  server.listen(PORT, () => {
+    console.log(`Talk server running on port ${PORT}`);
+  });
+}
+
+// Export for Vercel serverless functions
+module.exports = app; 

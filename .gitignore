@@ -75,7 +75,8 @@ dist
 
 # Gatsby files
 .cache/
-public
+# Remove this line - we want to track our public directory
+# public
 
 # Storybook build outputs
 .out
